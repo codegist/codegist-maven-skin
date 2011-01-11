@@ -36,14 +36,24 @@
     <licenses>
         <license>
             <name>Apache Software License - Version 2.0</name>
-            <url>http://crest.codegist.org/LICENSE.txt</url>
+            <url>http://www.codegist.org/LICENSE.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
     <issueManagement>
         <system>Github Issue Tracker</system>
-        <url>https://github.com/codegist/crest/issues</url>
+        <url>https://github.com/codegist/codegist-maven-skin/issues</url>
     </issueManagement>
-    
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.1</version>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
