@@ -50,7 +50,7 @@ under the License.
     <skin>
         <groupId>org.codegist</groupId>
         <artifactId>codegist-maven-skin</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </skin>
 </project>
 
