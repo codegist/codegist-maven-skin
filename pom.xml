@@ -23,6 +23,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>org.codegist</groupId>
     <artifactId>codegist-maven-skin</artifactId>
     <version>1.0.0</version>
+
+    <scm>
+        <url>https://github.com/codegist/codegist-maven-skin</url>
+        <connection>scm:git:git@github.com:codegist/codegist-maven-skin.git</connection>
+        <developerConnection>scm:git:git@github.com:codegist/codegist-maven-skin.git</developerConnection>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Apache Software License - Version 2.0</name>
+            <url>http://crest.codegist.org/LICENSE.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <system>Github Issue Tracker</system>
+        <url>https://github.com/codegist/crest/issues</url>
+    </issueManagement>
+    
 </project>
