@@ -355,6 +355,16 @@
   #end
 #end
 ##
+#macro ( share $username )
+    #if ($username)
+       <!-- AddThis Button BEGIN -->
+       <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=$username"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
+       <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+       <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=$username"></script>
+       <!-- AddThis Button END -->
+   #end
+#end
+##
 #macro ( poweredByLogo $poweredBy )
   #if( $poweredBy )
     #foreach ($item in $poweredBy)
@@ -421,8 +431,7 @@
       </a>
     #end
 #end
-##
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#">
   <head>
     <title>$title</title>
     <style type="text/css" media="all">
@@ -441,6 +450,36 @@
     <meta name="Date-Revision-yyyymmdd" content="$dateRevision" />
 #end
     <meta http-equiv="Content-Type" content="text/html; charset=${outputEncoding}" />
+    ##  OpenGraphProtocol meta
+    <meta property="og:title" content="$project.name" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="$project.url" />
+    <meta property="og:description" content="$project.description" />
+    <meta property="og:site_name" content="$project.name" />
+    ##  Classic metas
+    <meta name="title" content="$project.name" />
+    <meta name="description" content="$project.description" />
+    #if ( $decoration.custom && $decoration.custom.getChild("project.image") )
+        #set ( $projectImage = $decoration.custom.getChild("project.image").value )
+        #if ( !$projectImage.startsWith("http") )
+            #if ( $project.url.endsWith("/") )
+                #set ( $len = $project.url.length() - 1)
+            #else
+                #set ( $len = $project.url.length())
+            #end
+            #set ( $projectUrl = $project.url.substring(0, $len) )
+            #if ( $projectImage.startsWith("/") )
+                #set ( $start = 1)
+            #else
+                #set ( $start = 0)
+            #end
+            #set ( $projectUrl = $project.url.substring(0, $len) )
+            #set ( $projectImage = $projectImage.substring($start) )
+            #set ( $projectImage = $projectUrl + "/" + $projectImage )
+        #end
+        <meta property="og:image" content="$projectImage" />
+        <link rel="image_src" href="$projectImage" />
+    #end
     #if ( $decoration.body.head )
       #foreach( $item in $decoration.body.head.getChildren() )
         ## Workaround for DOXIA-150 due to a non-desired behaviour in p-u
@@ -455,6 +494,7 @@
         #end
       #end
     #end
+
     #if ($decoration.custom && $decoration.custom.getChild("analytics"))
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -490,6 +530,7 @@
        #mainMenu( $decoration.body.menus )
        #poweredByLogo( $decoration.poweredBy )
        #publishDate( "navigation-bottom" $decoration.publishDate $decoration.version )
+       #share( $decoration.custom.getChild("addthis.username").value)
       </div>
     </div>
     <div id="bodyColumn">
