@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.codegist</groupId>
     <artifactId>codegist-maven-skin</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <name>CodeGist Maven Site Skin</name>
     <scm>
         <url>https://github.com/codegist/codegist-maven-skin</url>
